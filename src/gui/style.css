@@ -1,0 +1,8 @@
+.bC{
+   -fx-background-color:#28AD56;
+   -fx-border-width:0 0 0 0;
+}
+.bC:hover{
+   -fx-border-width:1 1 1 1;
+   -fx-border-color:#f5f5f5;
+}
