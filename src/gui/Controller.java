@@ -37,15 +37,19 @@ public class Controller {
         File archivo = fc.showOpenDialog(null);
         if(archivo != null){
             archF.setText(archivo.getAbsolutePath());
-            Model.setPath(archivo.getAbsolutePath());
+            notificacionField.setText(null);
         }
     }
     @FXML
     void evaluar(MouseEvent event) {
-        if(archF.getText().equals("")){notificacionField.setText("Seleccionar el driver");return;}
-        Model.setBand(checkP.isSelected());
         notificacionField.setText("");
-        notificacionField.setText(Model.abrirNav(uField.getText(),pField.getText(),prField.getText()) + " - " + Model.matarProceso());
+        if(Model.validarDriver(archF.getText())){
+            Model.setPath(archF.getText());
+            Model.setBand(checkP.isSelected());
+            notificacionField.setText(Model.abrirNav(uField.getText(),pField.getText(),prField.getText()) + Model.matarProceso());
+        }else{
+            notificacionField.setText("Seleccionar el driver");
+        }
     }
     @FXML
     void cerrar(MouseEvent event) {
